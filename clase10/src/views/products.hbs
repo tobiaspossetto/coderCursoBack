@@ -1,0 +1,32 @@
+
+
+{{#if exits}}
+      <tr>
+
+    <th>nombre</th>
+
+    <th>precio</th>
+
+    <th>img</th>
+
+  </tr>
+
+    {{#each data}}
+    <br/>
+ <tr>
+      
+  
+    <td>{{title}}</td>
+
+    <td>{{price}}</td>
+
+    <td>{{thumbnail}}</td>
+
+  </tr>
+    {{/each}}
+ 
+
+</table>
+{{else}}
+    <h1>No hay productos</h1>
+{{/if}}
