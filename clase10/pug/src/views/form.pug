@@ -1,0 +1,13 @@
+
+html
+
+    head
+
+    body
+        a(href="/api/productos") ver productos
+        form(method="post" action="api/productos")
+
+            input(type="text" name="title" placeholder="nombre")
+            input(type="text"  name="price" placeholder="precio")
+            input(type="text" name="thumbnail" placeholder="img")
+            button(type="submit") enviar

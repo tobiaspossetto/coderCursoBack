@@ -1,0 +1,26 @@
+
+
+html
+
+    head
+
+    body
+        a(href="/") crear
+        table
+          th nombre
+          th precio
+          th img
+
+          if !exist 
+            p no hay productos
+
+          else
+
+            each i in data
+              br
+              td= i.title
+              td= i.price
+              td
+                img(src=i.thumbnail)
+
+
