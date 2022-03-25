@@ -1,0 +1,93 @@
+
+html
+
+
+    head
+         
+        script(src='/socket.io/socket.io.js')
+     
+    body
+        a(href="/api/productos") ver productos
+        form(onsubmit='return addProduct(this)')
+
+            input(type="text" id="title" placeholder="nombre")
+            input(type="text"  id="price" placeholder="precio")
+            input(type="text" id="thumbnail" placeholder="img")
+            button(type="submit" ) enviar
+
+        table
+            th nombre
+            th precio
+            th img
+
+            div(id="productos")
+        
+
+
+        h3 chat 
+
+        form(onsubmit='return addMsg(this)')
+
+            input(type="text" required id="email" placeholder="correo")
+            input(type="text"  id="message" placeholder="mensaje")
+            
+            button(type="submit" ) enviar
+
+        div(id='chats')
+
+        
+
+    script.
+     const socket = io('http://localhost:4000')
+
+        function render(data) {
+            const html = data.map(elem => {
+                return(`
+                    <br/>
+                    <td>${elem.title}</td>
+                    <td>${elem.price}</td>
+                    <td><img src=${elem.thumbnail}/></td>
+                    <br/>
+                    `)
+            }).join(" ");
+            document.getElementById('productos').innerHTML = html;
+        }
+
+
+
+        function renderMsg(data) {
+            const html = data.map(elem => {
+                return(`
+                    <br/>
+                    <p style='color: blue;font-weight: bold'>${elem.email}</p>
+                    <p style='color: brown'>${elem.date}</p>
+                    <p style='color: green'>${elem.message}</p>
+                    <br/>
+                    `)
+            }).join(" ");
+            document.getElementById('chats').innerHTML = html;
+        }
+
+       socket.on('PRODUCTS', function(data) { render(data); });
+
+        function addProduct(e) {
+            const product = {
+                title: document.getElementById('title').value,
+                price: document.getElementById('price').value,
+                thumbnail: document.getElementById('thumbnail').value
+            }
+            socket.emit('NEW_PRODUCT', product)
+            return false
+        }
+
+          function addMsg(e) {
+            const msg = {
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value,
+               
+            }
+            socket.emit('NEW_MESSAGE', msg)
+            return false
+        }
+
+        socket.on('MESSAGES', function(data) { renderMsg(data); });
