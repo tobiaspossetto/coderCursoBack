@@ -1,0 +1,11 @@
+# Primera entrega del proyecto final
+
+### Consultas:
+#### En el middleware utilizo el req.url para sacar la url a la que llego la consulta y responder, pero como la url base se configura en el index, por ejemplo /api/productos/ entonces solo me responde con lo que le sigue. Ejemplo: POST a http://localhost:8080/api/productos/ la respuesta es { "error": -1, "descripcion": "ruta /' metodo POST no autorizado"} debido a que solo toma lo que siga a la url base.
+
+#### Los codigos y mensajes con los que respondo al front trate de hacerlos guiandome por lo que conozco ya que no vimos ese tema a profundidad por ahora.
+
+#### Las acciones que requiren editar algo en el archivo como un producto lo hice siguiendo la logica con la que resolvi los desafios entregables de fs, no es la mejor forma de hacerlo pero es la unica que se me ocurrió, ya cuando se use una base de datos real la logica será distinta.
+
+#### En la ruta para agregar un producto por su id a un carrito, el id del producto se envia por el cuerpo de la petición
+
