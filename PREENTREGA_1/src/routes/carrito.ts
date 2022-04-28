@@ -2,20 +2,26 @@ import { Router } from "express";
 import {Request, Response } from "express"
 import CartController from "../controllers/CartController";
 const router = Router();
-
+import ProductsDaosFirebase from "../daos/products/ProductsDaosFirebase";
+const ProductsFirebase = new ProductsDaosFirebase('products');
 const CC = new CartController();
 
 //CREAR CARRITO
 router.post("/", async (req:Request,res:Response)=>{
     
     try {
-       let msg = await CC.createCart();
-       if(msg.status == -1){
-            res.status(500).json({ error: "Error creando carrito" });
-       }else{
-            res.json({ error: false, msg: msg.data }).status(200);
-       }
+     //   let msg = await CC.createCart();
+     //   if(msg.status == -1){
+     //        res.status(500).json({ error: "Error creando carrito" });
+     //   }else{
+     //        res.json({ error: false, msg: msg.data }).status(200); '2FFUY3bHBoiXFAxeGfW8vq'
+     //   }
+
+     let response = await ProductsFirebase.deleteAll();
+     console.log(response)
+     res.json({ error: false, msg: response }).status(200);
     } catch (error) {
+         console.log(error);
         res.status(500).json({ error: "Error del servidor" });
     }
 });

@@ -1,3 +1,16 @@
+
+# Segunda entrega del proyecto final
+
+### TODO:
+
+#### Crear los metodos para productos y carrito en Firestore
+#### Pasar los metodos para mongo a CONTENEDOR-DAOS
+#### Convertir las clases en controllers a CONTENEDOR-DAOS
+#### Crear el switch para cambiar la persistencia
+#### verificar las rutas
+
+
+
 # Primera entrega del proyecto final
 
 ### Consultas:
