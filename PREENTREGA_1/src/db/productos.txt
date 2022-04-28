@@ -1,0 +1,1 @@
+[{"nombre":"prod2","descripcion":"asasdd","precio":322,"codigo":"asdasd","stock":123,"id":2,"timestamp":"2022-04-28T13:10:57.721Z"}]

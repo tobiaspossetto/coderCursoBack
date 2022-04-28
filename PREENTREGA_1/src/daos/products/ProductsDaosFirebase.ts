@@ -31,5 +31,14 @@ export default class FirebaseProductos extends ContenedorFirebase {
     }
   }
 
+  async editProducts(id: string, data: any) {
+    try {
+      const doc = await this.query.doc(id).update(data)
+      return doc
+    } catch (error) {
+      throw new Error(`Error al editar: ${error}`)
+    }
+  }
+
   
 }

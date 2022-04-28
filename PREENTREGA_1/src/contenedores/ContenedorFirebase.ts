@@ -1,6 +1,6 @@
 import admin from 'firebase-admin'
 
-var serviceAccount = require("../key/node-test-329a9-firebase-adminsdk-i5m50-3a621db61e.json");
+var serviceAccount = require("../key/node-test-329a9-firebase-adminsdk-i5m50-abefdca85a.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://node-test-329a9.firebaseio.com"
@@ -9,8 +9,10 @@ admin.initializeApp({
 export default class ContenedorFirebase {
   db: any;
 query: any;
+  query2: typeof admin.firestore;
 
   constructor(collect: any) {
+    this.query2 = admin.firestore
     this.db = admin.firestore()
     this.query = this.db.collection(collect)
   }
